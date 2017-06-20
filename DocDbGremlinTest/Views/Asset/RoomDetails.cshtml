@@ -1,0 +1,42 @@
+﻿@model DocDbGremlinTest.Models.RoomView
+
+@{
+    ViewBag.Title = "RoomDetails";
+}
+
+<h2>RoomDetails</h2>
+
+<div>
+    <h4>Room</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.AccountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.AccountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Room.RoomNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Room.RoomNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditRoom", new { id = Model.Room.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

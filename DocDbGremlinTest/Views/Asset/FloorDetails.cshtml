@@ -1,0 +1,92 @@
+﻿@model DocDbGremlinTest.Models.FloorView
+
+@{
+    ViewBag.Title = "FloorDetails";
+}
+
+<h2>FloorDetails</h2>
+
+<div>
+    <h4>Floor</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor.Id)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor.Id)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor.AccountId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor.AccountId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor.FloorNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor.FloorNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Floor.NumberOfRooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Floor.NumberOfRooms)
+        </dd>
+
+    </dl>
+    <h3>Rooms</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Id
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Room Number
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Rooms) {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RoomNumber)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditRoom", new { id=item.Id }) |
+                    @Html.ActionLink("Details", "RoomDetails", new { id=item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @Html.ActionLink("Edit", "EditFloor", new { id = Model.Floor.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

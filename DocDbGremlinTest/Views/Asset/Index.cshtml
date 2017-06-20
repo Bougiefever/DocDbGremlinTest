@@ -1,0 +1,75 @@
+﻿@using DocDbGremlinTest.Models
+@using Microsoft.CodeAnalysis.CSharp.Syntax
+@model IEnumerable<DocDbGremlinTest.Models.IItem>
+
+@{
+    ViewBag.Title = "ItemList";
+}
+
+<h2>ItemList</h2>
+
+<p>
+    @Html.ActionLink("Add New Building", "CreateBuilding")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ItemType)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType)
+            </td>
+            <td>
+                @if (item.ItemType == ItemType.Building)
+                {
+                    @Html.ActionLink("Edit", "EditBuilding", new { id = item.Id })
+                }
+                else if (item.ItemType == ItemType.Floor)
+                {
+                    @Html.ActionLink("Edit", "EditFloor", new { id = item.Id })
+                }
+                else if (item.ItemType == ItemType.Room)
+                {
+                    @Html.ActionLink("Edit", "EditRoom", new { id = item.Id })
+                }
+                else if (item.ItemType == ItemType.Furniture)
+                {
+                    @Html.ActionLink("Edit", "EditFurniture", new { id = item.Id })
+                } | 
+                @if (item.ItemType == ItemType.Building)
+                {
+                    @Html.ActionLink("Details", "BuildingDetails", new { id = item.Id })
+                }
+                else if (item.ItemType == ItemType.Floor)
+                {
+                    @Html.ActionLink("Details", "FloorDetails", new { id = item.Id })
+                }
+                else if (item.ItemType == ItemType.Room)
+                {
+                    @Html.ActionLink("Details", "RoomDetails", new { id = item.Id })
+                } |
+
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>
